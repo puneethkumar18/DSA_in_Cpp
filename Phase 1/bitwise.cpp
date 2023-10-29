@@ -1,8 +1,29 @@
 #include<iostream>
 #include<math.h>
 using namespace std;
-//function to convert binary to decimal
 
+// checking whether the given number is 2powi
+void is2poweri(int a){
+    int bitcount = 0;
+    while(a != 0){
+        if (a&1){
+           bitcount++;
+
+    }
+    a<<1;
+    }
+    if(bitcount == 1){
+        cout<<"Yes the number given is power of 2"<<endl;
+
+    }
+    else{
+        cout<<"NO the number given is not power of 2"<<endl;
+    }
+
+
+}
+
+//function to convert binary to decimal
 void biToDeci(int a){
     int ans = 0, i = 0;
 

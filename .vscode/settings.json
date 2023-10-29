@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "COMMIT_EDITMSG": "git-commit",
-        "*.c": "c",
-        "iostream": "cpp"
-    }
-}
