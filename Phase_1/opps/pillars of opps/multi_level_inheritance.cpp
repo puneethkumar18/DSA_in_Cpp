@@ -8,13 +8,14 @@ class Animal{
 
 };
 
+// inrehite from one class
 class Dog:public Animal{
     public:
     void bark(){
         cout<<"Barking "<<endl;
     }
 };
-
+// this inherites from derived / inherited class
 class BullDog : public Dog{
     public:
 

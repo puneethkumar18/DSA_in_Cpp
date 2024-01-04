@@ -8,12 +8,8 @@ void updated(int ** ptr){
   //*ptr = *ptr + 1;
 
   **ptr = **ptr +1;
-  
-  
+   
 }
-
-
-
 
 int main(){
   //creating multilevel pointer
