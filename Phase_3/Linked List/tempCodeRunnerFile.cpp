@@ -1,2 +1,1 @@
- insertNode(tail,9,9);
-    insertNode(tail,9,18);
+cout<<"Memory free for node with data "<<value<<endl;
