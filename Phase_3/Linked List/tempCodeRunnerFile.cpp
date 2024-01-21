@@ -1,1 +1,0 @@
-cout<<"Memory free for node with data "<<value<<endl;
