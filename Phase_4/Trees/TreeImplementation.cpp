@@ -15,7 +15,7 @@ class Node{
     }
 };
 
-Node* buildTree(Node* root){
+Node* buildTree(Node* &root){
     cout<<"Enter the value of node"<<endl;
     int data;
     cin>>data;
