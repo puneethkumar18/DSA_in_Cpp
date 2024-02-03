@@ -89,6 +89,7 @@ void  levelOrderBuild(Node* &root){
     }
 }
 
+//LNR -> Left, node , right
 void inOrderTraversal(Node* root){
     if(root == NULL){
         return ;
@@ -99,6 +100,7 @@ void inOrderTraversal(Node* root){
     inOrderTraversal(root->right);
 }
 
+//NLR => node,left,right
 void preOrderTraversal(Node* root){
     if(root == NULL){
         return ;
@@ -108,6 +110,8 @@ void preOrderTraversal(Node* root){
     preOrderTraversal(root->left);
     preOrderTraversal(root->right);
 }
+
+//LRN -> left right node
 void postOrderTraversal(Node* root){
     if(root == NULL){
         return ;
