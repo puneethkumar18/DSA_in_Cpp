@@ -7,7 +7,7 @@ template <typename T>
 //graph implementation by adjacency list
 class Graph{
     public:
-    unordered_map<T , list<T>> adj;
+    unordered_map<T , list<T> > adj;
 
     void insert(int u , int v, bool direction){
         //direction shows -> whether the graph if directed or not
@@ -29,7 +29,7 @@ class Graph{
 };
 
 int main(){
-    Graph<T> g;
+    Graph<int> g;
 
     int nodes;
 
