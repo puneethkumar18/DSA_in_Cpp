@@ -19,8 +19,6 @@ void is2poweri(int a){
     else{
         cout<<"NO the number given is not power of 2"<<endl;
     }
-
-
 }
 
 //function to convert binary to decimal
