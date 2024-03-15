@@ -22,7 +22,6 @@ void oddOrEven(int number){
     else{
         cout<<number<<" is even"<<endl;
     }
-    
 }
 
 
