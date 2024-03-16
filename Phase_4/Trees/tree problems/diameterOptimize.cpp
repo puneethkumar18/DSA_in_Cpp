@@ -4,19 +4,20 @@ using namespace std;
 
 class Node{
     public:
-    int data;
-    Node* left;
-    Node* right;
+        int data;
+        Node *left;
+        Node *right;
 
-    Node(int data){
-        this->data = data;
-        this->left = NULL;
-        this->right = NULL;
-    }
+        Node(int data)
+        {
+            this->data = data;
+            this->left = NULL;
+            this->right = NULL;
+        }
 };
 void printTree(Node *&root)
 {
-    queue<Node* > q;
+    queue<Node *> q;
     q.push(root);
     q.push(NULL);
 
@@ -48,33 +49,8 @@ void printTree(Node *&root)
         }
     }
 }
-
-int height(Node *&root)
+Node *buildtree(Node *&root)
 {
-    if (root == NULL)
-    {
-        return 0;
-    }
-
-    int left = height(root->left);
-    int right = height(root->right);
-
-    return max(left, right) + 1;
-}
-
-int diameterOfTree(Node* &root){
-    if(root == NULL){
-        return 0;
-    }
-
-    int op1 = diameterOfTree(root->left);
-    int op2 = diameterOfTree(root->right);
-    int op3 = height(root->left)+1+height(root->right);
-
-    return max(op1,max(op2,op3));
-}
-
-Node* buildtree(Node* &root){
     cout << "Enter the data of the node" << endl;
     int data;
     cin >> data;
@@ -92,14 +68,35 @@ Node* buildtree(Node* &root){
     return root;
 }
 
+pair<int,int> diameterOfTree(Node* root){
+    if(!root){
+        pair<int,int> p = make_pair(0,0);
+        return p;
+    }
 
-int main(){
-    Node* root = buildtree(root);
+    pair<int, int> left = diameterOfTree(root->left);
+    pair<int,int> right = diameterOfTree(root->right);
+
+    int op1 = left.first;
+    int op2 = right.first;
+    int op3 = left.first+right.first+1;
+
+    pair<int,int> ans;
+    ans.first = max(op1,max(op2,op3));
+    ans.second  = max(left.second,right.second)+1;
+
+    return ans;
+}
+
+int main()
+{
+    Node *root = buildtree(root);
 
     printTree(root);
 
-    cout<<"Height of the tree "<<height(root)<<endl;
+    pair<int,int> ans = diameterOfTree(root);
 
-    cout<<"Diameter of the tree "<<diameterOfTree(root)<<endl;
+    cout << "Diameter of the tree " << ans.first << endl;
+    cout<< "Height of the Tree "<< ans.second<<endl;
     return 0;
 }
