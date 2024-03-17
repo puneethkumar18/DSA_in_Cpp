@@ -7,17 +7,17 @@ class Node
 {
 public:
     int data;
-    Node *left;
-    Node *right;
+    Node* left;
+    Node* right;
 
     Node(int data)
     {
         this->data = data;
-        left = NULL;
-        right = NULL;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
-Node *buildtree(Node *&root)
+Node* buildtree(Node *&root)
 {
     cout << "Enter the data of the node" << endl;
     int data;
@@ -36,9 +36,9 @@ Node *buildtree(Node *&root)
     return root;
 }
 
-void printTree(Node *&root)
+void printTree(Node* &root)
 {
-    queue<Node *> q;
+    queue<Node*> q;
     q.push(root);
     q.push(NULL);
 
@@ -83,7 +83,7 @@ vector<int> verticalLineOrderTraversal(Node* &root){
     }
 
     q.push(make_pair(root,make_pair(0,0)));
-
+    
     while (!q.empty())
     {
         pair<Node *, pair<int, int>> temp = q.front();
@@ -96,7 +96,7 @@ vector<int> verticalLineOrderTraversal(Node* &root){
         nodes[hd][lvl].push_back(frontNode->data);
 
         if(frontNode->left){
-            q.push(make_pair(root->left, make_pair(hd-1, lvl+1)));
+            q.push(make_pair(frontNode->left, make_pair(hd-1, lvl+1)));
         }
         if(frontNode->right){
             q.push(make_pair(frontNode->right,make_pair(hd+1,lvl+1)));

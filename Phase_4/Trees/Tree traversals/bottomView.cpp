@@ -17,7 +17,7 @@ public:
         right = NULL;
     }
 };
-Node *buildtree(Node *&root)
+Node* buildtree(Node *&root)
 {
     cout << "Enter the data of the node" << endl;
     int data;
@@ -71,32 +71,36 @@ void printTree(Node *&root)
     }
 }
 
-
-vector<int> topViewOfTree(Node* &root){
-
-    map<int,int> topNode;
+vector<int> bottomView(Node* &root){
+    //int for horizontal distace
+    vector<int> ans;
+    if(root == NULL){
+        return ans;
+    }
+    map<int,int> bottomNode;
     queue<pair<Node*,int>> q;
     q.push(make_pair(root,0));
-    vector<int> ans;
 
     while(!q.empty()){
-        pair<Node*, int> temp = q.front();
+    
+        pair<Node*,int> temp = q.front();
         q.pop();
+
         Node* frontNode = temp.first;
         int hd = temp.second;
-        
-        if(topNode.find(hd) == topNode.end()){
-            topNode[hd] = frontNode->data;
-        }
+        bottomNode[hd] = frontNode->data;
 
-        if(frontNode->left){
+        if(frontNode->left)
+        {
             q.push(make_pair(frontNode->left,hd-1));
         }
         if(frontNode->right){
             q.push(make_pair(frontNode->right,hd+1));
         }
+
     }
-    for(auto i:topNode){
+
+    for(auto i:bottomNode){
         ans.push_back(i.second);
     }
     return ans;
@@ -106,10 +110,9 @@ int main(){
     Node* root = buildtree(root);
     printTree(root);
 
-    vector<int> result = topViewOfTree(root);
-    cout<<"Top view Nodes of the tree is :"<<endl;
-    for(auto i:result){
-        cout<<i<<" ";
+    vector<int> result = bottomView(root);
+    for(auto u:result){
+        cout<<u<<" ";
     }
     cout<<endl;
     return 0;
