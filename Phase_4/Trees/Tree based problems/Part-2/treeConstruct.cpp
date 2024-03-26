@@ -2,6 +2,8 @@
 #include <queue>
 using namespace std;
 
+
+//Tree consruct using Inorder and preOrder list/array
 class Node
 {
 public:
@@ -62,7 +64,7 @@ Node* solve(vector<int> in,vector<int> pre,int &preIndex,int inOrderstart,int in
     if(preIndex >= n || inOrderstart > inOrderEnd){
         return NULL;
     }
-    int element = in[preIndex++];
+    int element = pre[preIndex++];
     Node* root = new Node(element);
     int position = findPosition(in,element,n);
 
@@ -81,8 +83,8 @@ void printPost(Node* root){
         return;
     }
     printPost(root->left);
+    cout << root->data << " ";
     printPost(root->left);
-    cout<<root->data<<" ";
 }
 
 int main(){
