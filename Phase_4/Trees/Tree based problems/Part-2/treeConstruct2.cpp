@@ -4,6 +4,7 @@
 using namespace std;
 
 unordered_map<int,int> OrderMap;
+//using inorder and post order
 
 class Node{
     public:
