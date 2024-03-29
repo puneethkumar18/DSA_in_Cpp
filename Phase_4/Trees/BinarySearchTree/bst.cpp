@@ -75,14 +75,32 @@ void takeInput(Node* &root){
     }
     
 }
+bool searchInBST(Node* &root,int search){
+    if(root == NULL){
+        return false;
+    }
+    if(root->data == search){
+        return true;
+    }
+    if(root->data > search){
+        bool left = searchInBST(root->left,search);
+        return left;
+    }
+    bool right = searchInBST(root->right, search);
+    return right;
+}
 int main(){
     vector<int> list = {10,7,5,8,15,17,16,20};
     int size = list.size();
     Node* root;
-    // for(int i=0;i<size;i++){
-    //     insertNode(root,list[i]);
-    // }
-    takeInput(root);
+    for(int i=0;i<size;i++){
+        insertNode(root,list[i]);
+    }
+    // takeInput(root);
+    cout<<"Enter the element to search -> ";
+    int search;
+    cin>>search;
+    cout<<"The element present in tree get 1 else 0 :"<<endl<<searchInBST(root,search)<<endl;
     printTree(root);
     return 0;
 }
