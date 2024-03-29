@@ -57,6 +57,20 @@ int kthSmallestElement(Node* root, int &i,int k){
         return root->data;
     }
     return kthSmallestElement(root->right,i,k);
+}
+int kthBiggestElement(Node* root,int &i,int k){
+    if(root == NULL){
+        return -1;
+    }
+    int right = kthBiggestElement(root->right,i,k);
+    if(right != -1){
+        return right;
+    }
+    i++;
+    if(i == k){
+        return root->data;
+    }
+    return kthBiggestElement(root->left,i,k);
 } 
 int main()
 {
@@ -72,9 +86,15 @@ int main()
     cout<<"InOrder ->"<<endl;
     inOrderPrint(root);
     cout<<endl;
-    cout<< "enter the k value -> ";
+    cout<< "enter the k value for smallest element -> ";
     cin>>k;
     cout<<endl;
     cout<<"Kth smallest elemet of the tree is ->"<<kthSmallestElement(root,i,k)<<endl;
+    int j;
+    int m = 0; 
+    cout<<"Enter the k value for biggest element ->";
+    cin>>j;
+    cout<<endl;
+    cout << "Kth Biggest elemet of the tree is ->" << kthBiggestElement(root, m, j) << endl;
     return 0;
 }
