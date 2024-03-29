@@ -89,6 +89,23 @@ bool searchInBST(Node* &root,int search){
     bool right = searchInBST(root->right, search);
     return right;
 }
+
+Node* minValue(Node* root){
+    Node* temp = root;
+    while (temp->left != NULL)
+    {
+        temp = temp->left ; 
+    }
+    return temp;
+}
+Node* maxValue(Node* root){
+    while (root->right != NULL)
+    {
+        root = root->right;
+    }
+    return root;
+}
+
 int main(){
     vector<int> list = {10,7,5,8,15,17,16,20};
     int size = list.size();
@@ -101,6 +118,9 @@ int main(){
     int search;
     cin>>search;
     cout<<"The element present in tree get 1 else 0 :"<<endl<<searchInBST(root,search)<<endl;
+
+    cout<<"The minimum element of the binary serach tree is -> "<<minValue(root)->data<<endl;
+    cout << "The maximum element of the binary serach tree is -> " << maxValue(root)->data << endl;
     printTree(root);
     return 0;
 }
