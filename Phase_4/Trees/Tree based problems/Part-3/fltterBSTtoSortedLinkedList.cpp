@@ -104,6 +104,8 @@ Node* flatterBSTtoSortedlist(Node* root){
 int main(){
     Node* root = buildtree(root);
     printTree(root);
+    cout<<"After flattering tree to sorted linked list :"<<endl;
     Node* ans = flatterBSTtoSortedlist(root);
+    printTree(ans);
     return 0;
 }
