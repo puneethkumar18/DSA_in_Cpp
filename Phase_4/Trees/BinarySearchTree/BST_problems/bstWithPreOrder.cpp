@@ -116,18 +116,43 @@ Node* byInOrder(Node* &root,vector<int> pre,int s,int e){
     return root;
 }
 //3rd approch is using preOrder only T.C of O(N)
-void usingPreBST(Node* &root, vector<int> pre){
-    
-    
+
+Node* solve(vector<int> pre, int min, int max, int &index)
+{
+    if (index >= pre.size())
+    {
+        return NULL;
+    }
+
+    if (pre[index] > max || pre[index] < min)
+    {
+        return NULL;
+    }
+
+    Node *root = new Node(pre[index++]);
+    root->left = solve( pre, min, root->data, index);
+    root->right = solve( pre, root->data, max, index);
+
+    return root;
+}
+Node* usingPreBST( vector<int> pre){
+    int max = INT_MAX;
+    int min = INT_MIN;
+    int index = 0;
+     return solve(pre,min,max,index);
 }
 
+
 int main(){
-    vector<int> preOrder = {6,3,8,10,2,4,12};
+    vector<int> preOrder = {20,10,5,15,13,35,30,42};
     Node* root = NULL;
-    bstFromPreOrder(root,preOrder);
-    printTree(root);
-    pretoinVector(preOrder);
-    byInOrder(root,preOrder,0,preOrder.size()-1);
+    // bstFromPreOrder(root,preOrder);
+    // printTree(root);
+    // pretoinVector(preOrder);
+    // byInOrder(root,preOrder,0,preOrder.size()-1);
+    // printTree(root);
+
+    root = usingPreBST(preOrder);
     printTree(root);
     return 0;
 }
