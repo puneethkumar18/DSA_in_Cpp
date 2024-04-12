@@ -1,13 +1,13 @@
 # DSA_in_Cpp
 Practicing the data structures and algo. in C++ language.  
 
-phase 1 :
+Phase 1 :
       consiting basics and opps concepts in c++.
 
-phase 2 :
+Phase 2 :
       consiting Array opration ,Pointers, Recursion  , String opration in c++.
 
-phase 3 :
+Phase 3 :
       Linked list and Likned list manuplation and
       types of Linkelist:
           ->Singly linked list
@@ -20,3 +20,12 @@ phase 3 :
       ->Circular Queue,
       ->Double Ended Queue
       in c++.
+
+Phase 4:
+      Trees, Graphs, HashMaps, Heaps:
+
+      Trees :
+            Tree Implementation,
+            Binary Tree,
+            Binary Search Tree,
+            Problems on Trees.
