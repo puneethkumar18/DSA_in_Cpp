@@ -63,18 +63,18 @@ LinkedList* mergekSortedList(vector<LinkedList*> &listArray){
         LinkedList* temp = pq.top();
         pq.pop();
 
+        if (tail->next != NULL)
+        {
+            pq.push(temp->next);
+        }
+        
         if (head == NULL){
             head = temp;
             tail = temp;
-            if(tail->next != NULL){
-                pq.push(temp->next);
-            }
+            
         }else{
             tail->next = temp;
             tail = tail->next;
-            if(temp->next != NULL){
-                pq.push(tail->next);
-            }
         }
     }
     return head;
