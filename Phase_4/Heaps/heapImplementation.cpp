@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 // it is a complete binary tree
@@ -141,6 +142,44 @@ int main(){
     cout << endl;
 
 
-    cout<<
+    cout<<"using Priority Queue "<<endl;
+
+    //maxHeap
+    priority_queue<int> pq;
+
+    pq.push(4);
+    pq.push(2);
+    pq.push(5);
+    pq.push(3);
+    
+    cout<<"elelment at top :"<<pq.top()<<endl;
+    pq.pop();
+    cout<<"top after the first pop "<<pq.top()<<endl;
+    if(pq.empty()){
+        cout<<"Heap is Empty"<<endl;
+    }else{
+        cout << "Heap is Not Empty" << endl;
+    }
+
+    //minHeap
+
+    priority_queue<int, vector<int> , greater<int>> minHeap;
+
+    minHeap.push(4);
+    minHeap.push(2);
+    minHeap.push(5);
+    minHeap.push(3);
+
+    cout << "elelment at top :" << minHeap.top() << endl;
+    minHeap.pop();
+    cout << "top after the first pop " << minHeap.top() << endl;
+    if (minHeap.empty())
+    {
+        cout << "Heap is Empty" << endl;
+    }
+    else
+    {
+        cout << "Heap is Not Empty" << endl;
+    }
     return 0;
 }
