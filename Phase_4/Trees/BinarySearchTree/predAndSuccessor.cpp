@@ -68,7 +68,7 @@ pair<int,int> predessorAndSuccessorOfNode(Node* root, int k){
         pred = leftTree->data;
         leftTree = leftTree->left;
     }
-    Node* rigtTree = temp->right;
+    Node* rightTree = temp->right;
     while (rightTree != NULL)
     {
         sucs = rightTree->data;
