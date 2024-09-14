@@ -28,6 +28,8 @@ int main(){
     int *arr = new int[n];
     cout<<"Enter the elements array "<<endl;
     for(int i=0;i<n;i++){
+
+        
         cin>>arr[i];
         //also cin>>(arr+i);
     }
