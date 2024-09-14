@@ -11,9 +11,6 @@ void printArray(int *arr,int size){
 }
 
 
-
-
-
 int main(){
     //creating dynamic array
 
