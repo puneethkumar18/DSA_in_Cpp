@@ -33,24 +33,28 @@ public:
     }
 };
 
-bool dfs(map<int, vector<int>> adj, int node, int parent, unordered_map<int, bool> &visited)
+bool cycleWithDirectedGraphUsingDFS(unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsvisited, int node, map<int, vector<int>> adj)
 {
+
     visited[node] = true;
+    dfsvisited[node] = true;
 
     for (auto i : adj[node])
     {
         if (!visited[i])
         {
-            return dfs(adj, i, node, visited);
-        }
-        else
-        {
-            if (i != parent)
+            bool iscycle = cycleWithDirectedGraphUsingDFS(visited, dfsvisited, i, adj);
+            if (iscycle)
             {
                 return true;
             }
         }
+        else if (dfsvisited[i])
+        {
+            return true;
+        }
     }
+    dfsvisited[node] = false;
     return false;
 }
 int main()
@@ -66,19 +70,21 @@ int main()
         {3, 8},
         {8, 4},
     };
+    // vector<vector<int>> list = {{1, 2}, {5, 1}, {1, 3}, {1, 4}};
     Graph g;
     for (int i = 0; i < list.size(); i++)
     {
         int s = list[i][0];
         int e = list[i][1];
-        g.insertEdge(s, e, false);
+        g.insertEdge(s, e, true);
     }
     g.printGraph();
     int start;
     cout << "Enter the starting Node : " << endl;
     cin >> start;
     unordered_map<int, bool> visited;
-    bool res = dfs(g.adj, start, -1, visited);
+    unordered_map<int, bool> dfsVisited;
+    bool res = cycleWithDirectedGraphUsingDFS(visited, dfsVisited, start, g.adj);
     cout << "Graph is having cycle -> " << res << endl;
     return 0;
 }
