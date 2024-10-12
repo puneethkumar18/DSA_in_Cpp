@@ -34,12 +34,10 @@ public:
     }
 };
 
-void topoSortUsingDFS(int node, map<int, vector<int>> adj, vector<int> &st)
+void topoSortUsingDFS(map<int, vector<int>> adj, vector<int> &st)
 {
-    unordered_map<int, bool> visited;
     queue<int> q;
-    q.push(node);
-    st.push_back(node);
+
     unordered_map<int, int> indegree;
     for (auto i : adj)
     {
@@ -48,20 +46,24 @@ void topoSortUsingDFS(int node, map<int, vector<int>> adj, vector<int> &st)
             indegree[j]++;
         }
     }
+    for (auto i : adj)
+    {
+        if (indegree[i.first] == 0)
+        {
+            q.push(i.first);
+        }
+    }
     while (!q.empty())
     {
         int front = q.front();
         q.pop();
+        st.push_back(front);
         for (auto i : adj[front])
         {
-            if (!visited[i])
+            indegree[i]--;
+            if (indegree[i] == 0)
             {
                 q.push(i);
-                indegree[i]--;
-                if (indegree[i] == 0)
-                {
-                    st.push_back(i);
-                }
             }
         }
     }
@@ -79,7 +81,7 @@ int main()
     //     {3, 8},
     //     {8, 4},
     // };
-    vector<vector<int>> list = {{1, 2}, {5, 1}, {1, 3}, {1, 4}};
+    vector<vector<int>> list = {{1, 2}, {2, 5}, {1, 3}, {3, 5}, {5, 4}};
     // vector<vector<int>> list = {
     //     {0, 3},
     //     {0, 1},
@@ -95,12 +97,12 @@ int main()
     }
     g.printGraph();
 
-    int start;
-    cout << "Enter the starting node of the graph " << endl;
-    cin >> start;
+    // int start;
+    // cout << "Enter the starting node of the graph " << endl;
+    // cin >> start;
     vector<int> st;
     ;
-    topoSortUsingDFS(start, g.adj, st);
+    topoSortUsingDFS(g.adj, st);
     for (auto i : st)
     {
         cout << i << ",";
